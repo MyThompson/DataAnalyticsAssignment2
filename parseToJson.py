@@ -15,11 +15,11 @@ for i in range(0,sheet.nrows):
     if i > 0 :
         tempList = [(k,v) for k,v in temp.items()]
         data['data']=data['data']+tempList
-print (data['data'])
+# print (data['data'])
 
 
 
-
+print(json.dumps(data))
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
 
