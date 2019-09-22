@@ -8,7 +8,7 @@ class CSV:
         self.keylist = []
 
     def read_csv(self):
-        file = open("SacramentocrimeJanuary2006.csv", "r")
+        file = open("resources/Project2DataTrimmed.csv", "r")
         for x in file.readline().split(","):
             self.structure.update({x: []})
             self.keylist.append(x)
@@ -26,12 +26,21 @@ class CSV:
         except:
             print("invalid cell")
 
+    def print_row(self):
+        print("Printing a row:")
+        row = input("Please enter a row between 1 and 20: ")
+        try:
+            for key in self.keylist:
+                print(key + ": " + self.structure[key][int(row)-1])
+        except:
+            print("Invalid row/value entered.")
+
 
 def main():
     test = CSV
     test.read_csv(CSV)
     test.print_cell(CSV)
-    
+    test.print_row(CSV)
 
 
 if __name__ == '__main__':
