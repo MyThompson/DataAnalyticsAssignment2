@@ -65,8 +65,8 @@ class CSV:
 def main():
     test = CSV
     test.read_csv(CSV)
-#    test.print_cell(CSV)
-#    test.print_row(CSV)
+    test.print_cell(CSV)
+    test.print_row(CSV)
     test.sort_by_col(CSV)
 
 
