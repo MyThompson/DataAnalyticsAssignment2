@@ -1,4 +1,4 @@
-class CSV:
+class data:
 
     structure = {}
     keylist = []
@@ -7,16 +7,24 @@ class CSV:
         self.structure = {}
         self.keylist = []
 
-    def read_csv(self):
-        file = open("resources/Project2DataTrimmed.csv", "r")
+    def read_csv(self, location):
+        file = open(location, "r")
         for x in file.readline().split(","):
             self.structure.update({x: []})
             self.keylist.append(x)
+            self.keylist.append(x)
 
+        # Ignores any value that has a broken row (because the csv for the consumer reports is broken)
         for lines in file:
-            array = lines.split(",")
-            for i in range(len(self.keylist)):
-                self.structure[self.keylist[i]].append(array[i])
+            if lines == "":
+                pass
+            else:
+                array = lines.split(",")
+                if len(array) != len(self.keylist):
+                    pass
+                else:
+                    for i in range(len(self.keylist)):
+                        self.structure[self.keylist[i]].append(array[i])
 
     def print_cell(self):
         num = input("Please enter item number: ")
@@ -59,15 +67,47 @@ class CSV:
         values.sort()
         print(type(values[0][1]))
 
-        for x in values:
-            print(key + ": " + str(x[0]))
+        for key in self.keylist:
+            print(key + ": ")
+            for row in values:
+                print(self.structure[key][row[1]])
+
+    def getStateAmount(self):
+        state = input("Enter a state code you would like to see (ex: IN): ")
+        statesDict = {}
+        for x in self.structure["State"]:
+            try:
+                statesDict[x] += 1
+            except:
+                statesDict.update({x: 1})
+
+        print("Number of complaints in " + state + ": " + str(statesDict[state]))
+
+    def read_xml(self):
+        pass
+
+    def read_xml(self):
+        pass
+
 
 def main():
-    test = CSV
-    test.read_csv(CSV)
-    test.print_cell(CSV)
-    test.print_row(CSV)
-    test.sort_by_col(CSV)
+    num = int(input("Enter 1 for part one, 2 for part 2: "))
+    if num == 1:
+        test = data
+        value = int(input("Enter 1. for CSV, 2. for XML, 3. for JSON (options 2 and 3 don't work): "))
+        if value == 1:
+            test.read_csv(test, "resources/Project2DataTrimmed.csv")
+        if value == 2:
+            test.read_xml(test)
+        if value == 3:
+            test.read_json(test)
+        test.print_cell(test)
+        test.print_row(test)
+        test.sort_by_col(test)
+    if num == 2:
+        test = data
+        test.read_csv(test, "resources/consumer.csv")
+        test.getStateAmount(test)
 
 
 if __name__ == '__main__':
