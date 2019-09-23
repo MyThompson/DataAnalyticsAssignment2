@@ -86,6 +86,9 @@ class data:
     def read_xml(self):
         pass
 
+    def read_json(self):
+        pass
+
 
 
 def main():
