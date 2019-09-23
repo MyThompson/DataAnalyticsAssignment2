@@ -53,12 +53,14 @@ class CSV:
             key = "Total Air Emissions (Pounds)"
 
         for x in range(len(self.structure[key])):
-            values.append((self.structure[key][x], x))
+            number = float(self.structure[key][x])
+            values.append((number, x))
 
         values.sort()
+        print(type(values[0][1]))
 
         for x in values:
-            print(key + ": " + x[0])
+            print(key + ": " + str(x[0]))
 
 def main():
     test = CSV
