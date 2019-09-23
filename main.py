@@ -86,8 +86,6 @@ class data:
     def read_xml(self):
         pass
 
-    def read_xml(self):
-        pass
 
 
 def main():
