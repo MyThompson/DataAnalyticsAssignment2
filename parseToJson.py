@@ -1,7 +1,7 @@
 import xlrd
 import json
 
-excel = xlrd.open_workbook("Project2DataTrimmed.xlsx")
+excel = xlrd.open_workbook("resources/Project2DataTrimmed.xlsx")
 sheet = excel.sheet_by_index(0)
 
 data={}
